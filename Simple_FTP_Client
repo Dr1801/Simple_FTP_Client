@@ -1,0 +1,23 @@
+import tkinter
+from tkinter import BOTH, END, LEFT
+import ftplib
+
+ftp = ftplib.FTP()
+
+
+def connectServer():
+    ip = ent_ip.get()
+    port = int(ent_port.get())
+    try:
+        msg = ftp.connect(ip,port)
+        text_servermsg.insert(END,"\n")
+        text_servermsg.insert(END,msg)
+        lbl_login.place(x=150,y=20)
+        ent_login.place(x=150,y=40)
+        lbl_pass.place(x=150,y=60)
+        ent_pass.place(x=150,y=80)
+        btn_login.place(x=182,y=110)
+    except:
+        text_servermsg.insert(END,"\n")
+        text_servermsg.insert(END,"Unable to connect")
+        
