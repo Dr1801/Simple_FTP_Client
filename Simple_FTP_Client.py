@@ -21,3 +21,19 @@ def connectServer():
         text_servermsg.insert(END,"\n")
         text_servermsg.insert(END,"Unable to connect")
         
+def loginServer():
+    user = ent_login.get()
+    password = ent_pass.get()
+    try:
+        msg = ftp.login(user,password)
+        text_servermsg.insert(END,"\n")
+        text_servermsg.insert(END,msg)
+        displayDir()
+        lbl_login.place_forget()
+        ent_login.place_forget()
+        lbl_pass.place_forget()
+        ent_pass.place_forget()
+        btn_login.place_forget()
+    except:
+        text_servermsg.insert(END,"\n")
+        text_servermsg.insert(END,"Unable to login")
