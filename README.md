@@ -1,1 +1,1 @@
-# Simple_FTP_Client
+# Simple FTP Client GUI
