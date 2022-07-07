@@ -38,7 +38,6 @@ def loginServer():
     except:
         text_servermsg.insert(END,"\n")
         text_servermsg.insert(END,"Unable to login")
-
         
 def displayDir():
     libox_serverdir.insert(0,"----------------------------------------------------")
@@ -47,5 +46,6 @@ def displayDir():
     for item in dirlist:
         libox_serverdir.insert(0, item)
         
-        
+
+#FTP commands        
         
