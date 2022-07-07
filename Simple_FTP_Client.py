@@ -5,6 +5,7 @@ import ftplib
 ftp = ftplib.FTP()
 
 
+#Server commands
 def connectServer():
     ip = ent_ip.get()
     port = int(ent_port.get())
@@ -37,3 +38,14 @@ def loginServer():
     except:
         text_servermsg.insert(END,"\n")
         text_servermsg.insert(END,"Unable to login")
+
+        
+def displayDir():
+    libox_serverdir.insert(0,"----------------------------------------------------")
+    dirlist = []
+    dirlist = ftp.nlst()
+    for item in dirlist:
+        libox_serverdir.insert(0, item)
+        
+        
+        
