@@ -40,12 +40,37 @@ def loginServer():
         text_servermsg.insert(END,"Unable to login")
         
 def displayDir():
-    libox_serverdir.insert(0,"----------------------------------------------------")
+    libox_serverdir.insert(0,"####################################################")
     dirlist = []
     dirlist = ftp.nlst()
     for item in dirlist:
         libox_serverdir.insert(0, item)
         
 
-#FTP commands        
-        
+###FTP commands
+
+#Manipulating files
+def deleteFile():
+    file = ent_input.get()
+    try:
+        msg = ftp.delete(file)
+        text_servermsg.insert(END,"\n")
+        text_servermsg.insert(END,msg)
+    except:
+        text_servermsg.insert(END,"\n")
+        text_servermsg.insert(END,"Unable to delete file")
+    displayDir()    
+    
+def downloadFile():
+    file = ent_input.get()
+    down = open(file, "wb")
+    try:
+        text_servermsg.insert(END,"\n")
+        text_servermsg.insert(END,"Downloading " + file + "...")
+        text_servermsg.insert(END,"\n")
+        text_servermsg.insert(END,ftp.retrbinary("RETR " + file, down.write))
+    except:
+        text_servermsg.insert(END,"\n")
+        text_servermsg.insert(END,"Unable to download file")
+    displayDir()
+       
