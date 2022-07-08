@@ -1,11 +1,9 @@
 import tkinter
 from tkinter import BOTH, END, LEFT
 import ftplib
-
 ftp = ftplib.FTP()
 
 
-#Server commands
 def connectServer():
     ip = ent_ip.get()
     port = int(ent_port.get())
@@ -21,6 +19,16 @@ def connectServer():
     except:
         text_servermsg.insert(END,"\n")
         text_servermsg.insert(END,"Unable to connect")
+        
+def closeConnection():
+    try:
+        text_servermsg.insert(END,"\n")
+        text_servermsg.insert(END,"Closing connection...")
+        text_servermsg.insert(END,"\n")
+        text_servermsg.insert(END,ftp.quit())
+    except:
+        text_servermsg.insert(END,"\n")
+        text_servermsg.insert(END,"Unable to disconnect")
         
 def loginServer():
     user = ent_login.get()
@@ -38,6 +46,7 @@ def loginServer():
     except:
         text_servermsg.insert(END,"\n")
         text_servermsg.insert(END,"Unable to login")
+
         
 def displayDir():
     libox_serverdir.insert(0,"####################################################")
@@ -59,8 +68,8 @@ def deleteFile():
     except:
         text_servermsg.insert(END,"\n")
         text_servermsg.insert(END,"Unable to delete file")
-    displayDir()    
-    
+    displayDir()
+
 def downloadFile():
     file = ent_input.get()
     down = open(file, "wb")
@@ -73,4 +82,3 @@ def downloadFile():
         text_servermsg.insert(END,"\n")
         text_servermsg.insert(END,"Unable to download file")
     displayDir()
-       
