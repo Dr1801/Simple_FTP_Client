@@ -69,7 +69,7 @@ def deleteFile():
         text_servermsg.insert(END,"\n")
         text_servermsg.insert(END,"Unable to delete file")
     displayDir()
-
+       
 def downloadFile():
     file = ent_input.get()
     down = open(file, "wb")
@@ -82,3 +82,54 @@ def downloadFile():
         text_servermsg.insert(END,"\n")
         text_servermsg.insert(END,"Unable to download file")
     displayDir()
+       
+def uploadFile():
+    file = ent_input.get()
+    try:
+        up = open(file, "rb")
+        text_servermsg.insert(END,"\n")
+        text_servermsg.insert(END,"Uploading " + file + "...")
+        text_servermsg.insert(END,"\n")
+        text_servermsg.insert(END,ftp.storbinary("STOR " + file,up))
+    except:
+        text_servermsg.insert(END,"\n")
+        text_servermsg.insert(END,"Unable to upload file")
+    displayDir()   
+
+
+#Directory manipulation
+def changeDirectory():
+    directory = ent_input.get()
+    try:
+        msg = ftp.cwd(directory)
+        text_servermsg.insert(END,"\n")
+        text_servermsg.insert(END,msg)
+    except:
+        text_servermsg.insert(END,"\n")
+        text_servermsg.insert(END,"Unable to change directory")
+    displayDir()
+    
+def createDirectory():
+    directory = ent_input.get()
+    try:
+        msg = ftp.mkd(directory)
+        text_servermsg.insert(END,"\n")
+        text_servermsg.insert(END,msg)
+    except:
+        text_servermsg.insert(END,"\n")
+        text_servermsg.insert(END,"Unable to create directory")
+    displayDir()
+       
+def deleteDirectory():
+    directory = ent_input.get()
+    try:
+        msg = ftp.rmd(directory)
+        text_servermsg.insert(END,"\n")
+        text_servermsg.insert(END,msg)
+    except:
+        text_servermsg.insert(END,"\n")
+        text_servermsg.insert(END,"Unable to delete directory")
+    displayDir()
+                
+
+###Display
