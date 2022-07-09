@@ -3,7 +3,7 @@ from tkinter import BOTH, END, LEFT
 import ftplib
 ftp = ftplib.FTP()
 
-
+####Manipulating server
 def connectServer():
     ip = ent_ip.get()
     port = int(ent_port.get())
@@ -97,18 +97,7 @@ def uploadFile():
     displayDir()   
 
 
-#Directory manipulation
-def changeDirectory():
-    directory = ent_input.get()
-    try:
-        msg = ftp.cwd(directory)
-        text_servermsg.insert(END,"\n")
-        text_servermsg.insert(END,msg)
-    except:
-        text_servermsg.insert(END,"\n")
-        text_servermsg.insert(END,"Unable to change directory")
-    displayDir()
-    
+#Directory manipulation    
 def createDirectory():
     directory = ent_input.get()
     try:
@@ -130,6 +119,19 @@ def deleteDirectory():
         text_servermsg.insert(END,"\n")
         text_servermsg.insert(END,"Unable to delete directory")
     displayDir()
-                
+    
+def changeDirectory():
+    directory = ent_input.get()
+    try:
+        msg = ftp.cwd(directory)
+        text_servermsg.insert(END,"\n")
+        text_servermsg.insert(END,msg)
+    except:
+        text_servermsg.insert(END,"\n")
+        text_servermsg.insert(END,"Unable to change directory")
+    displayDir()
 
+    
 ###Display
+
+window = tkinter.Tk()
