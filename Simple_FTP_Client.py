@@ -134,4 +134,10 @@ def changeDirectory():
     
 ###Display
 
+#Create window
 window = tkinter.Tk()
+window.title("FTP Client")
+window.wm_iconbitmap("icon.ico")
+window.geometry("1000x600")
+window.resizable(0,0)
+window.configure(bg="black")
