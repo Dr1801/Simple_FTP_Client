@@ -141,3 +141,14 @@ window.wm_iconbitmap("icon.ico")
 window.geometry("1000x600")
 window.resizable(0,0)
 window.configure(bg="black")
+
+#Server response 
+text_servermsg = tkinter.Text(window).place(x=20,y=150)
+
+#Connect
+lbl_ip = tkinter.Label(window, text="IP Address : ", fg="red", bg="black").place(x=430,y=20)
+ent_ip = tkinter.Entry(window).place(x=500,y=20)
+lbl_port = tkinter.Label(window, text="Port : ", fg="cyan", bg="black").place(x=430,y=60)
+ent_port = tkinter.Entry(window).place(x=500,y=60)
+btn_connect = tkinter.Button(window, text="Connect", command=connectServer, width=12, bg="green", fg="black").place(x=430,y=100)
+btn_quit = tkinter.Button(window, text="Disconnect", command=closeConnection, width=12, bg="red", fg="black").place(x=530,y=100)
