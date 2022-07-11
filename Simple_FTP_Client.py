@@ -152,3 +152,16 @@ lbl_port = tkinter.Label(window, text="Port : ", fg="cyan", bg="black").place(x=
 ent_port = tkinter.Entry(window).place(x=500,y=60)
 btn_connect = tkinter.Button(window, text="Connect", command=connectServer, width=12, bg="green", fg="black").place(x=430,y=100)
 btn_quit = tkinter.Button(window, text="Disconnect", command=closeConnection, width=12, bg="red", fg="black").place(x=530,y=100)
+
+#Login
+lbl_login = tkinter.Label(window, text="Username")
+ent_login = tkinter.Entry(window)
+lbl_pass = tkinter.Label(window, text="Password")
+ent_pass = tkinter.Entry(window)
+btn_login = tkinter.Button(window, text="Login", command=loginServer)
+
+#Listing
+lbl_dir = tkinter.Label(window, text="Directory listing: ", fg="black", bg="pink", width=34, height=1).place(x=700,y=143)
+libox_serverdir = tkinter.Listbox(window, width=40, height=14).place(x=700,y=165)
+
+#File & Directory
