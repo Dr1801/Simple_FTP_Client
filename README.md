@@ -1,1 +1,1 @@
-# Simple FTP Client 
+# FTP Client GUI
