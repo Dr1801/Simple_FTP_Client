@@ -1,3 +1,4 @@
+###Import module
 import tkinter
 from tkinter import BOTH, END, LEFT
 import ftplib
@@ -57,7 +58,6 @@ def displayDir():
         
 
 ###FTP commands
-
 #Manipulating files
 def deleteFile():
     file = ent_input.get()
@@ -133,7 +133,6 @@ def changeDirectory():
 
     
 ###Display
-
 #Create window
 window = tkinter.Tk()
 window.title("FTP Client")
@@ -174,5 +173,4 @@ btn_delfile = tkinter.Button(window, text="Delete File", command=deleteFile, wid
 btn_downfile = tkinter.Button(window, text="Download File", command=downloadFile, width=15, bg="cyan").place(x=700,y=505)
 btn_upfile = tkinter.Button(window, text="Upload File", command=uploadFile, width=15, bg="cyan").place(x=850,y=505)
 
-#Create new window
 window.mainloop()
