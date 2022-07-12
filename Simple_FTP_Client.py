@@ -165,3 +165,14 @@ lbl_dir = tkinter.Label(window, text="Directory listing: ", fg="black", bg="pink
 libox_serverdir = tkinter.Listbox(window, width=40, height=14).place(x=700,y=165)
 
 #File & Directory
+lbl_input = tkinter.Label(window, text="Input", fg="black", bg="pink", width=34, height=1).place(x=700,y=400)
+ent_input = tkinter.Entry(window, width=40).place(x=700,y=420)
+btn_crdir = tkinter.Button(window, text="Create Directory", command=createDirectory, width=15, bg="yellow").place(x=850,y=470)
+btn_chdir = tkinter.Button(window, text="Change Directory", command=changeDirectory, width=15, bg="yellow").place(x=700,y=470)
+btn_deldir = tkinter.Button(window, text="Delete Directory", command=deleteDirectory, width=15, bg="red").place(x=850,y=540)
+btn_delfile = tkinter.Button(window, text="Delete File", command=deleteFile, width=15, bg="red").place(x=700,y=540)
+btn_downfile = tkinter.Button(window, text="Download File", command=downloadFile, width=15, bg="cyan").place(x=700,y=505)
+btn_upfile = tkinter.Button(window, text="Upload File", command=uploadFile, width=15, bg="cyan").place(x=850,y=505)
+
+#Create new window
+window.mainloop()
