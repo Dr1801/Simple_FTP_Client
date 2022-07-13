@@ -4,7 +4,7 @@ from tkinter import BOTH, END, LEFT
 import ftplib
 ftp = ftplib.FTP()
 
-####Manipulating server
+###Interact with the server
 def connectServer():
     ip = ent_ip.get()
     port = int(ent_port.get())
@@ -46,9 +46,11 @@ def loginServer():
         btn_login.place_forget()
     except:
         text_servermsg.insert(END,"\n")
-        text_servermsg.insert(END,"Unable to login")
-
+        text_servermsg.insert(END,"Unable to login")      
         
+
+###FTP commands
+#Manipulating files
 def displayDir():
     libox_serverdir.insert(0,"####################################################")
     dirlist = []
@@ -56,9 +58,6 @@ def displayDir():
     for item in dirlist:
         libox_serverdir.insert(0, item)
         
-
-###FTP commands
-#Manipulating files
 def deleteFile():
     file = ent_input.get()
     try:
@@ -97,7 +96,18 @@ def uploadFile():
     displayDir()   
 
 
-#Directory manipulation    
+#Directory manipulation
+def changeDirectory():
+    directory = ent_input.get()
+    try:
+        msg = ftp.cwd(directory)
+        text_servermsg.insert(END,"\n")
+        text_servermsg.insert(END,msg)
+    except:
+        text_servermsg.insert(END,"\n")
+        text_servermsg.insert(END,"Unable to change directory")
+    displayDir()
+    
 def createDirectory():
     directory = ent_input.get()
     try:
@@ -119,28 +129,18 @@ def deleteDirectory():
         text_servermsg.insert(END,"\n")
         text_servermsg.insert(END,"Unable to delete directory")
     displayDir()
-    
-def changeDirectory():
-    directory = ent_input.get()
-    try:
-        msg = ftp.cwd(directory)
-        text_servermsg.insert(END,"\n")
-        text_servermsg.insert(END,msg)
-    except:
-        text_servermsg.insert(END,"\n")
-        text_servermsg.insert(END,"Unable to change directory")
-    displayDir()
+                
 
-    
 ###Display
 #Create window
 window = tkinter.Tk()
 window.title("FTP Client")
-window.wm_iconbitmap("icon.ico")
 window.geometry("1000x600")
 window.resizable(0,0)
 window.configure(bg="black")
 
+
+###Button
 #Server response 
 text_servermsg = tkinter.Text(window).place(x=20,y=150)
 
@@ -174,3 +174,5 @@ btn_downfile = tkinter.Button(window, text="Download File", command=downloadFile
 btn_upfile = tkinter.Button(window, text="Upload File", command=uploadFile, width=15, bg="cyan").place(x=850,y=505)
 
 window.mainloop()
+
+
